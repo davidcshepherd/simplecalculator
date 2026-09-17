@@ -22,4 +22,31 @@ void main() {
     }
     expect(find.text('Error'), findsOneWidget);
   });
+
+  testWidgets('two plus two', (tester) async {
+    //Setup
+    await tester.pumpWidget(const CalculatorApp());
+
+    //DO SOMETHING
+    //press 2
+    await tester.tap(find.text('2').last);
+    await tester.pump();
+
+    //press +
+    await tester.tap(find.text('+').last);
+    await tester.pump();
+
+    //press 2
+    await tester.tap(find.text('2').last);
+    await tester.pump();
+
+    //press =
+    await tester.tap(find.text('=').last);
+    await tester.pump();
+
+    //CHECK SOMETHING
+    expect(find.text('4'), findsNWidgets(2));
+
+  });
+
 }
